@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org/DTD Mapper 3.0" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bs.mapper.CategoryMapper">
+
+	<resultMap id="categoryMap" type="com.bs.beans.CategoryBean">
+		<id property="id" column="id" javaType="java.lang.Integer"></id>
+
+		<result property="name" column="name" javaType="java.lang.String"></result>
+		<result property="type1" column="type1" javaType="java.lang.String"></result>
+		<result property="type2" column="type2" javaType="java.lang.String"></result>
+		<result property="remark1" column="remark1" javaType="java.lang.String"></result>
+		<result property="remark2" column="remark2" javaType="java.lang.String"></result>
+		<result property="remark3" column="remark3" javaType="java.lang.Integer"></result>
+		<result property="remark4" column="remark4" javaType="java.lang.Integer"></result>
+		<result property="remark5" column="remark1" javaType="java.lang.String"></result>
+		<result property="remark6" column="remark2" javaType="java.lang.String"></result>
+	</resultMap>
+
+	<insert id="insert" parameterType="com.bs.beans.CategoryBean">
+		insert into t_category(id,
+		name,
+		type1,
+		type2,
+
+		remark1,
+		remark2,
+		remark3,
+		remark4,
+		remark5,
+		remark6
+		)
+		values(#{id},
+		#{name},
+		#{type1},
+		#{type2},
+
+		#{remark1},
+		#{remark2},
+		#{remark3},
+		#{remark4},
+		#{remark5},
+		#{remark6})
+	</insert>
+
+	<update id="update" parameterType="com.bs.beans.CategoryBean">
+		update t_category set
+		name =
+		#{name},
+		type1 = #{type1},
+		type2 = #{type2},
+
+		remark1 = #{remark1},
+		remark2 = #{remark2},
+		remark3 = #{remark3},
+		remark4 = #{remark4},
+		remark5 = #{remark5},
+		remark6 = #{remark6}
+		
+		where id
+		= #{id}
+	</update>
+
+	<delete id="delete">
+		delete from t_category where id = #{id}
+	</delete>
+
+	<select id="getById" resultType="com.bs.beans.CategoryBean">
+		select * from t_category
+		where id
+		=
+		#{id}
+	</select>
+
+	<select id="getAll" resultType="com.bs.beans.CategoryBean"
+		parameterType="InParams">
+		select * from t_category
+	</select>
+
+	<select id="getCount" resultType="java.lang.Integer"
+		parameterType="InParams">
+		select count(*) from t_category
+	</select>
+
+	<select id="getLastOne" resultType="com.bs.beans.CategoryBean">
+		select * from t_category
+		order by
+		id desc limit 1
+	</select>
+
+	<update id="update2" parameterType="com.bs.beans.CategoryBean">
+		update t_category
+		set
+		where id
+		=
+		#{id}
+	</update>
+
+	<update id="update3" parameterType="com.bs.beans.CategoryBean">
+		update t_category
+		set
+		where id
+		=
+		#{id}
+	</update>
+
+	<update id="update4" parameterType="com.bs.beans.CategoryBean">
+		update t_category
+		set
+		where id
+		=
+		#{id}
+	</update>
+
+	<update id="update5" parameterType="com.bs.beans.CategoryBean">
+		update t_category
+		set
+		where id
+		=
+		#{id}
+	</update>
+
+	<delete id="delete2" parameterType="InParams">
+		delete from t_category where
+		id =
+		#{parameter.id}
+	</delete>
+
+	<delete id="delete3" parameterType="InParams">
+		delete from t_category where
+		id =
+		#{parameter.id}
+	</delete>
+
+	<select id="getAll2" resultType="com.bs.beans.CategoryBean"
+		parameterType="InParams">
+		select * from t_category
+
+		Limit
+		#{parameter.pageStart},#{parameter.pageSize}
+	</select>
+
+	<select id="getAll3" resultType="com.bs.beans.CategoryBean"
+		parameterType="InParams">
+		select * from t_category
+
+		Limit
+		#{parameter.pageStart},#{parameter.pageSize}
+	</select>
+
+	<select id="getAll4" resultType="com.bs.beans.CategoryBean"
+		parameterType="InParams">
+		select * from t_category
+
+		Limit
+		#{parameter.pageStart},#{parameter.pageSize}
+	</select>
+
+	<select id="getAll5" resultType="com.bs.beans.CategoryBean"
+		parameterType="InParams">
+		select * from t_category
+
+		Limit
+		#{parameter.pageStart},#{parameter.pageSize}
+	</select>
+
+	<select id="getOne1" resultType="com.bs.beans.CategoryBean"
+		parameterType="InParams">
+		select * from t_category
+		where
+		true
+	</select>
+
+	<select id="getOne2" resultType="com.bs.beans.CategoryBean"
+		parameterType="InParams">
+		select * from t_category
+		where
+		true
+	</select>
+
+	<select id="getOne3" resultType="com.bs.beans.CategoryBean"
+		parameterType="InParams">
+		select * from t_category
+		where
+		true
+	</select>
+
+	<select id="getOne4" resultType="com.bs.beans.CategoryBean"
+		parameterType="InParams">
+		select * from t_category
+		where
+		true
+	</select>
+
+	<select id="getOne5" resultType="com.bs.beans.CategoryBean"
+		parameterType="InParams">
+		select * from t_category
+		where
+		true
+	</select>
+		<select id="getScalar" resultType="java.lang.Integer"
+		parameterType="InParams">
+		select count(*) from t_category as a
+	</select>
+	<select id="getScalar1" resultType="java.lang.Integer"
+		parameterType="InParams">
+		select count(*) from t_category as a
+	</select>
+	<select id="getScalar2" resultType="java.lang.Integer"
+		parameterType="InParams">
+		select count(*) from t_category as a
+	</select>
+</mapper>

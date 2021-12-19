@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org/DTD Mapper 3.0" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bs.mapper.CommentMapper">
+
+	<resultMap id="commentMap" type="com.bs.beans.CommentBean">
+		<id property="id" column="id" javaType="java.lang.Integer"></id>
+
+		<result property="content" column="content" javaType="java.lang.String"></result>
+		<result property="createdate" column="createdate" javaType="java.lang.String"></result>
+		<result property="userid" column="userid" javaType="java.lang.Integer"></result>
+		<result property="productid" column="productid" javaType="java.lang.Integer"></result>
+		<result property="replycontent" column="replycontent" javaType="java.lang.String"></result>
+		<result property="replydate" column="replydate" javaType="java.lang.String"></result>
+		<result property="replyuserid" column="replyuserid" javaType="java.lang.Integer"></result>
+		<result property="remark1" column="remark1" javaType="java.lang.String"></result>
+		<result property="remark2" column="remark2" javaType="java.lang.String"></result>
+		<result property="remark3" column="remark3" javaType="java.lang.Integer"></result>
+		<result property="remark4" column="remark4" javaType="java.lang.Integer"></result>
+		<result property="remark5" column="remark1" javaType="java.lang.String"></result>
+		<result property="remark6" column="remark2" javaType="java.lang.String"></result>
+	</resultMap>
+
+	<insert id="insert" parameterType="com.bs.beans.CommentBean">
+		insert into t_comment(id,
+		content,
+		createdate,
+		userid,
+		productid,
+		replycontent,
+		replydate,
+		replyuserid,
+		remark1,
+		remark2,
+		remark3,
+		remark4,
+		remark5,
+		remark6
+		)
+		values(#{id},
+		#{content},
+		#{createdate},
+		#{userid},
+		#{productid},
+		#{replycontent},
+		#{replydate},
+		#{replyuserid},
+		#{remark1},
+		#{remark2},
+		#{remark3},
+		#{remark4},
+		#{remark5},
+		#{remark6}
+	)
+	</insert>
+
+	<update id="update" parameterType="com.bs.beans.CommentBean">
+		update t_comment set 
+		replycontent = #{replycontent},
+		replydate = #{replydate},
+		replyuserid = #{replyuserid},
+		remark1 = #{remark1},
+		remark2 = #{remark2},
+		remark3 = #{remark3},
+		remark4 = #{remark4},
+		remark5 = #{remark5},
+		remark6 = #{remark6}
+		where id
+		= #{id}
+	</update>
+
+	<delete id="delete">
+		delete from t_comment where id = #{id}
+	</delete>
+
+	<select id="getById" resultType="com.bs.beans.CommentBean">
+		select * from t_comment
+		where id
+		=
+		#{id}
+	</select>
+
+	<select id="getAll" resultType="com.bs.beans.CommentBean"
+		parameterType="InParams">
+		select a.*,b.username AS commentname,c.username AS replayname from t_comment AS a
+		LEFT JOIN t_user AS b ON a.userid = b.id
+		LEFT JOIN t_user AS c ON a.replyuserid = c.id
+		<where>
+			<if test="parameter.userid != null and parameter.userid !=''">
+				and userid = #{parameter.userid}
+			</if>
+			<if test="parameter.productid != null and parameter.productid != ''">
+				and productid = #{parameter.productid}
+			</if>
+		</where>
+		order by id desc 
+		Limit #{parameter.pageStart},#{parameter.pageSize}
+	</select>
+
+	<select id="getCount" resultType="java.lang.Integer"
+		parameterType="InParams">
+		select count(*) from t_comment as a
+		<where>
+			<if test="parameter.userid != null and parameter.userid !=''">
+				and userid = #{parameter.userid}
+			</if>
+			<if test="parameter.productid != null and parameter.productid != ''">
+				and productid = #{parameter.productid}
+			</if>
+		</where>
+	</select>
+
+	<select id="getLastOne" resultType="com.bs.beans.CommentBean">
+		select * from t_comment
+		order by
+		id desc limit 1
+	</select>
+
+	<update id="update2" parameterType="com.bs.beans.CommentBean">
+		update t_comment
+		set status = #{status}
+		where id
+		=
+		#{id}
+	</update>
+
+	<update id="update3" parameterType="com.bs.beans.CommentBean">
+		update t_comment
+		set
+		where id
+		=
+		#{id}
+	</update>
+
+	<update id="update4" parameterType="com.bs.beans.CommentBean">
+		update t_comment
+		set
+		where id
+		=
+		#{id}
+	</update>
+
+	<update id="update5" parameterType="com.bs.beans.CommentBean">
+		update t_comment
+		set
+		where id
+		=
+		#{id}
+	</update>
+
+	<delete id="delete2" parameterType="InParams">
+		delete from t_comment where
+		id =
+		#{parameter.id}
+	</delete>
+
+	<delete id="delete3" parameterType="InParams">
+		delete from t_comment where
+		id =
+		#{parameter.id}
+	</delete>
+
+	<select id="getAll2" resultType="com.bs.beans.CommentBean"
+		parameterType="InParams">
+		select a.*,b.username AS commentname,c.username AS replayname,p.title from t_comment AS a
+		LEFT JOIN t_user AS b ON a.userid = b.id
+		LEFT JOIN t_user AS c ON a.replyuserid = c.id
+		LEFT JOIN t_product AS p ON a.productid = p.id
+		order by a.id desc 
+		Limit #{parameter.pageStart},#{parameter.pageSize}
+	</select>
+
+	<select id="getAll3" resultType="com.bs.beans.CommentBean"
+		parameterType="InParams">
+		select * from t_comment where 
+	</select>
+
+	<select id="getAll4" resultType="com.bs.beans.CommentBean"
+		parameterType="InParams">
+		select * from t_comment
+
+		Limit
+		#{parameter.pageStart},#{parameter.pageSize}
+	</select>
+
+	<select id="getAll5" resultType="com.bs.beans.CommentBean"
+		parameterType="InParams">
+		select * from t_comment
+
+		Limit
+		#{parameter.pageStart},#{parameter.pageSize}
+	</select>
+
+	<select id="getOne1" resultType="com.bs.beans.CommentBean"
+		parameterType="InParams">
+		select * from t_comment
+		where
+		true
+	</select>
+
+	<select id="getOne2" resultType="com.bs.beans.CommentBean"
+		parameterType="InParams">
+		select * from t_comment
+		where
+		true
+	</select>
+
+	<select id="getOne3" resultType="com.bs.beans.CommentBean"
+		parameterType="InParams">
+		select * from t_comment
+		where
+		true
+	</select>
+
+	<select id="getOne4" resultType="com.bs.beans.CommentBean"
+		parameterType="InParams">
+		select * from t_comment
+		where
+		true
+	</select>
+
+	<select id="getOne5" resultType="com.bs.beans.CommentBean"
+		parameterType="InParams">
+		select * from t_comment
+		where
+		true
+	</select>
+		<select id="getScalar" resultType="java.lang.Integer"
+		parameterType="InParams">
+		select count(*) from t_comment as a where productid = #{parameter.productid}
+	</select>
+	<select id="getScalar1" resultType="java.lang.Integer"
+		parameterType="InParams">
+		select count(*) from t_comment as a
+	</select>
+	<select id="getScalar2" resultType="java.lang.Integer"
+		parameterType="InParams">
+		select count(*) from t_comment as a
+	</select>
+</mapper>

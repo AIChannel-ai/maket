@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org/DTD Mapper 3.0" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bs.mapper.ProductMapper">
+
+	<resultMap id="productMap" type="com.bs.beans.ProductBean">
+		<id property="id" column="id" javaType="java.lang.Integer"></id>
+
+		<result property="title" column="title" javaType="java.lang.String"></result>
+		<result property="productcode" column="productcode" javaType="java.lang.String"></result>
+		<result property="categoryid" column="categoryid" javaType="java.lang.Integer"></result>
+		<result property="intro" column="intro" javaType="java.lang.String"></result>
+		<result property="oldprice" column="oldprice" javaType="java.lang.Integer"></result>
+		<result property="price" column="price" javaType="java.lang.Integer"></result>
+		<result property="number" column="number" javaType="java.lang.Integer"></result>
+		<result property="imagepath" column="imagepath" javaType="java.lang.String"></result>
+		<result property="createdate" column="createdate" javaType="java.lang.String"></result>
+		<result property="userid" column="userid" javaType="java.lang.Integer"></result>
+		<result property="status" column="status" javaType="java.lang.String"></result>
+		<result property="newest" column="newest" javaType="java.lang.Integer"></result>
+		<result property="hottest" column="hottest" javaType="java.lang.Integer"></result>
+		<result property="recommend" column="recommend" javaType="java.lang.Integer"></result>
+		<result property="remark1" column="remark1" javaType="java.lang.String"></result>
+		<result property="remark2" column="remark2" javaType="java.lang.String"></result>
+		<result property="remark3" column="remark3" javaType="java.lang.Integer"></result>
+		<result property="remark4" column="remark4" javaType="java.lang.Integer"></result>
+		<result property="remark5" column="remark1" javaType="java.lang.String"></result>
+		<result property="remark6" column="remark2" javaType="java.lang.String"></result>
+	</resultMap>
+
+	<insert id="insert" parameterType="com.bs.beans.ProductBean">
+		insert into t_product(id,
+		title,
+		productcode,
+		categoryid,
+		intro,
+		oldprice,
+		price,
+		number,
+		imagepath,
+		createdate,
+		userid,
+		status,
+		newest,
+		hottest,
+		recommend,
+		remark1,
+		remark2,
+		remark3,
+		remark4,
+		remark5,
+		remark6
+		)
+		values(#{id},
+		#{title},
+		#{productcode},
+		#{categoryid},
+		#{intro},
+		#{oldprice},
+		#{price},
+		#{number},
+		#{imagepath},
+		#{createdate},
+		#{userid},
+		#{status},
+		#{newest},
+		#{hottest},
+		#{recommend},
+		#{remark1},
+		#{remark2},
+		#{remark3},
+		#{remark4},
+		#{remark5},
+		#{remark6}
+	)
+	</insert>
+
+	<update id="update" parameterType="com.bs.beans.ProductBean">
+		update t_product set
+		title=#{title},
+		productcode=#{productcode},
+		categoryid=#{categoryid},
+		intro=#{intro},
+		oldprice=#{oldprice},
+		price=#{price},
+		number=#{number},
+		imagepath=#{imagepath},
+		createdate=#{createdate},
+		userid=#{userid},
+		status=#{status},
+		newest=#{newest},
+		hottest=#{hottest},
+		recommend=#{recommend},
+
+		remark1 = #{remark1},
+		remark2 = #{remark2},
+		remark3 = #{remark3},
+		remark4 = #{remark4},
+		remark5 = #{remark5},
+		remark6 = #{remark6}
+		where id
+		= #{id}
+	</update>
+
+	<delete id="delete">
+		delete from t_product where id = #{id}
+	</delete>
+
+	<select id="getById" resultType="com.bs.beans.ProductBean">
+		select * from t_product
+		where id
+		=
+		#{id}
+	</select>
+
+	<select id="getAll" resultType="com.bs.beans.ProductBean"
+		parameterType="InParams">
+		SELECT a.* FROM v_product AS a
+		<where>
+			<if test="parameter.title != null and parameter.title !=''">
+				and title like CONCAT('%',#{parameter.title},'%')
+			</if>
+			<if test="parameter.status != null and parameter.status != ''">
+				and status = #{parameter.status}
+			</if>
+			<if test="parameter.productcode != null and parameter.productcode != ''">
+				and productcode = #{parameter.productcode}
+			</if>
+			<if test="parameter.categoryid != null and parameter.categoryid != ''">
+				and categoryid = #{parameter.categoryid}
+			</if>
+		</where>
+		ORDER BY saleAllNumber DESC,id DESC
+		Limit #{parameter.pageStart},#{parameter.pageSize}
+	</select>
+
+	<select id="getCount" resultType="java.lang.Integer"
+		parameterType="InParams">
+		select count(*) from v_product
+		<where>
+			<if test="parameter.title != null and parameter.title !=''">
+				and title like CONCAT('%',#{parameter.title},'%')
+			</if>
+			<if test="parameter.status != null and parameter.status != ''">
+				and status = #{parameter.status}
+			</if>
+			<if test="parameter.productcode != null and parameter.productcode != ''">
+				and productcode = #{parameter.productcode}
+			</if>
+			<if test="parameter.categoryid != null and parameter.categoryid != ''">
+				and categoryid = #{parameter.categoryid}
+			</if>
+		</where>
+	</select>
+
+	<select id="getLastOne" resultType="com.bs.beans.ProductBean">
+		select * from t_product
+		order by
+		id desc limit 1
+	</select>
+
+	<update id="update2" parameterType="com.bs.beans.ProductBean">
+		update t_product
+		set number = #{number}
+		where id
+		=
+		#{id}
+	</update>
+
+	<update id="update3" parameterType="com.bs.beans.ProductBean">
+		update t_product
+		set
+		where id
+		=
+		#{id}
+	</update>
+
+	<update id="update4" parameterType="com.bs.beans.ProductBean">
+		update t_product
+		set
+		where id
+		=
+		#{id}
+	</update>
+
+	<update id="update5" parameterType="com.bs.beans.ProductBean">
+		update t_product
+		set
+		where id
+		=
+		#{id}
+	</update>
+
+	<delete id="delete2" parameterType="InParams">
+		delete from t_product where
+		id =
+		#{parameter.id}
+	</delete>
+
+	<delete id="delete3" parameterType="InParams">
+		delete from t_product where
+		id =
+		#{parameter.id}
+	</delete>
+
+	<select id="getAll2" resultType="com.bs.beans.ProductBean"
+		parameterType="InParams">
+		select * from v_product where true order by createdate DESC LIMIT #{parameter.pageStart},#{parameter.pageSize}
+	</select>
+
+	<select id="getAll3" resultType="com.bs.beans.ProductBean"
+		parameterType="InParams">
+		SELECT a.* FROM v_product AS a
+		ORDER BY saleAllNumber DESC LIMIT #{parameter.pageStart},#{parameter.pageSize}
+	</select>
+
+	<select id="getAll4" resultType="com.bs.beans.ProductBean"
+		parameterType="InParams">
+		SELECT a.* FROM v_product AS a
+		<where>
+			<if test="parameter.title != null and parameter.title !=''">
+				and title like CONCAT('%',#{parameter.title},'%')
+			</if>
+			<if test="parameter.status != null and parameter.status != ''">
+				and status = #{parameter.status}
+			</if>
+			<if test="parameter.productcode != null and parameter.productcode != ''">
+				and productcode = #{parameter.productcode}
+			</if>
+			<if test="parameter.categoryid != null and parameter.categoryid != ''">
+				and categoryid = #{parameter.categoryid}
+			</if>
+		</where>
+		ORDER BY id DESC
+		Limit #{parameter.pageStart},#{parameter.pageSize}
+	</select>
+
+	<select id="getAll5" resultType="com.bs.beans.ProductBean"
+		parameterType="InParams">
+		select * from t_product
+
+		Limit
+		#{parameter.pageStart},#{parameter.pageSize}
+	</select>
+
+	<select id="getOne1" resultType="com.bs.beans.ProductBean"
+		parameterType="InParams">
+		select * from t_product
+		where
+		true
+	</select>
+
+	<select id="getOne2" resultType="com.bs.beans.ProductBean"
+		parameterType="InParams">
+		select * from t_product
+		where
+		true
+	</select>
+
+	<select id="getOne3" resultType="com.bs.beans.ProductBean"
+		parameterType="InParams">
+		select * from t_product
+		where
+		true
+	</select>
+
+	<select id="getOne4" resultType="com.bs.beans.ProductBean"
+		parameterType="InParams">
+		select * from t_product
+		where
+		true
+	</select>
+
+	<select id="getOne5" resultType="com.bs.beans.ProductBean"
+		parameterType="InParams">
+		select * from t_product
+		where
+		true
+	</select>
+		<select id="getScalar" resultType="java.lang.Integer"
+		parameterType="InParams">
+		select count(*) from t_product as a
+	</select>
+	<select id="getScalar1" resultType="java.lang.Integer"
+		parameterType="InParams">
+		select count(*) from t_product as a
+	</select>
+	<select id="getScalar2" resultType="java.lang.Integer"
+		parameterType="InParams">
+		select count(*) from t_product as a
+	</select>
+</mapper>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<tables>
+	<table id="user">
+		<col input="text" show="false" key="remark1" value="扩展" source="" def="" order="999"></col>
+	</table>
+	<table id="product">
+		<col input="text" show="true" listshow="true" key="productcode" value="商品代码" source="" def="" order="999" type="" required="required" readonly="true">background:#ccc;</col>
+		<col input="text" show="true" listshow="true" key="title" value="名称" source="" def="" order="999" type="" required="required"></col>
+		<col input="text" show="true" listshow="true" key="oldprice" value="原价" source="" def="" order="999" type="number" required="required"></col>
+		<col input="text" show="true" listshow="true" key="price" value="价格" source="" def="" order="999" type="number" required="required"></col>
+		<col input="text" show="true" listshow="true" key="number" value="数量（库存）" source="" def="" order="999" type="number" required="required"></col>
+		<col input="textarea" show="true" listshow="false" key="intro" value="简介" source="" def="" order="999" type="number" required="required">width:800px;height:120px;</col>
+		<col input="file" show="true" listshow="true" key="imagepath" value="图片" source="" def="" order="999"></col>
+		<col input="text" show="false" listshow="true" key="createdate" value="创建时间" source="" def="" order="999"></col>
+	</table>
+	<table id="category">
+		<col input="text" show="true" key="name" value="名称" source="" def="" order="999">3</col>
+		<col input="text" show="true" key="type1" value="类型" source="" def="" order="999">4</col>
+	</table>
+</tables>

@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org/DTD Mapper 3.0" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bs.mapper.OrderProductMapper">
+
+	<resultMap id="order_productMap" type="com.bs.beans.OrderProductBean">
+		<id property="id" column="id" javaType="java.lang.Integer"></id>
+
+		<result property="orderid" column="orderid" javaType="java.lang.Integer"></result>
+		<result property="productid" column="productid" javaType="java.lang.Integer"></result>
+		<result property="number" column="number" javaType="java.lang.Integer"></result>
+		<result property="remark1" column="remark1" javaType="java.lang.String"></result>
+		<result property="remark2" column="remark2" javaType="java.lang.String"></result>
+		<result property="remark3" column="remark3" javaType="java.lang.Integer"></result>
+		<result property="remark4" column="remark4" javaType="java.lang.Integer"></result>
+		<result property="remark5" column="remark1" javaType="java.lang.String"></result>
+		<result property="remark6" column="remark2" javaType="java.lang.String"></result>
+	</resultMap>
+
+	<insert id="insert" parameterType="com.bs.beans.OrderProductBean">
+		insert into t_order_product(id,
+		orderid,
+		productid,
+		number,
+		remark1,
+		remark2,
+		remark3,
+		remark4,
+		remark5,
+		remark6
+		)
+		values(#{id},
+		#{orderid},
+		#{productid},
+		#{number},
+		#{remark1},
+		#{remark2},
+		#{remark3},
+		#{remark4},
+		#{remark5},
+		#{remark6}
+	)
+	</insert>
+
+	<update id="update" parameterType="com.bs.beans.OrderProductBean">
+		update t_order_product set
+		orderid=#{orderid},
+		productid=#{productid},
+		number=#{number},
+
+		remark1 = #{remark1},
+		remark2 = #{remark2},
+		remark3 = #{remark3},
+		remark4 = #{remark4},
+		remark5 = #{remark5},
+		remark6 = #{remark6}
+		where id
+		= #{id}
+	</update>
+
+	<delete id="delete">
+		delete from t_order_product where id = #{id}
+	</delete>
+
+	<select id="getById" resultType="com.bs.beans.OrderProductBean">
+		select * from t_order_product
+		where id
+		=
+		#{id}
+	</select>
+
+	<select id="getAll" resultType="com.bs.beans.OrderProductBean"
+		parameterType="InParams">
+		SELECT a.*,b.title,b.price,a.number*b.price AS subprice,imagepath FROM t_order_product AS a
+		LEFT JOIN t_product AS b ON a.productid = b.id
+		<where>
+			<if test="parameter.orderid != null and parameter.orderid != ''">
+				and orderid = #{parameter.orderid}
+			</if>
+		</where>
+	</select>
+
+	<select id="getCount" resultType="java.lang.Integer"
+		parameterType="InParams">
+		select count(*) from t_order_product as a
+		<where>
+			<if test="parameter.orderid != null and parameter.orderid != ''">
+				and orderid = #{parameter.orderid}
+			</if>
+		</where>
+	</select>
+
+	<select id="getLastOne" resultType="com.bs.beans.OrderProductBean">
+		select * from t_order_product
+		order_product by
+		id desc limit 1
+	</select>
+
+	<update id="update2" parameterType="com.bs.beans.OrderProductBean">
+		update t_order_product
+		set
+		where id
+		=
+		#{id}
+	</update>
+
+	<update id="update3" parameterType="com.bs.beans.OrderProductBean">
+		update t_order_product
+		set
+		where id
+		=
+		#{id}
+	</update>
+
+	<update id="update4" parameterType="com.bs.beans.OrderProductBean">
+		update t_order_product
+		set
+		where id
+		=
+		#{id}
+	</update>
+
+	<update id="update5" parameterType="com.bs.beans.OrderProductBean">
+		update t_order_product
+		set
+		where id
+		=
+		#{id}
+	</update>
+
+	<delete id="delete2" parameterType="InParams">
+		delete from t_order_product where
+		orderid =
+		#{parameter.orderid}
+	</delete>
+
+	<delete id="delete3" parameterType="InParams">
+		delete from t_order_product where
+		id =
+		#{parameter.id}
+	</delete>
+
+	<select id="getAll2" resultType="com.bs.beans.OrderProductBean"
+		parameterType="InParams">
+		select * from t_order_product where newest = 1 order_product by id desc limit 4
+	</select>
+
+	<select id="getAll3" resultType="com.bs.beans.OrderProductBean"
+		parameterType="InParams">
+		select * from t_order_product where hottest = 1 order_product by id desc limit 7
+	</select>
+
+	<select id="getAll4" resultType="com.bs.beans.OrderProductBean"
+		parameterType="InParams">
+		SELECT date_format(b.createdate,'%Y-%m') AS createdate,SUM(a.number) AS number  FROM t_order_product AS a
+		INNER JOIN t_order AS b ON a.orderid = b.id
+		GROUP BY date_format(b.createdate,'%Y-%m') 
+		ORDER BY createdate DESC LIMIT 12
+	</select>
+
+	<select id="getAll5" resultType="com.bs.beans.OrderProductBean"
+		parameterType="InParams">
+		SELECT c.categoryid,d.`name` AS title, SUM(a.number) AS number  FROM t_order_product AS a
+		INNER JOIN t_product AS c ON a.productid = c.id
+		INNER JOIN t_category AS d ON c.categoryid = d.id
+		GROUP BY c.categoryid
+		ORDER BY number DESC LIMIT 10;
+	</select>
+
+	<select id="getOne1" resultType="com.bs.beans.OrderProductBean"
+		parameterType="InParams">
+		select * from t_order_product
+		where
+		true
+	</select>
+
+	<select id="getOne2" resultType="com.bs.beans.OrderProductBean"
+		parameterType="InParams">
+		select * from t_order_product
+		where
+		true
+	</select>
+
+	<select id="getOne3" resultType="com.bs.beans.OrderProductBean"
+		parameterType="InParams">
+		select * from t_order_product
+		where
+		true
+	</select>
+
+	<select id="getOne4" resultType="com.bs.beans.OrderProductBean"
+		parameterType="InParams">
+		select * from t_order_product
+		where
+		true
+	</select>
+
+	<select id="getOne5" resultType="com.bs.beans.OrderProductBean"
+		parameterType="InParams">
+		select * from t_order_product
+		where
+		true
+	</select>
+	<select id="getScalar" resultType="java.lang.Integer"
+		parameterType="InParams">
+		select sum(number) from t_order_product as a where productid = #{parameter.productid}
+	</select>
+	<select id="getScalar1" resultType="java.lang.Integer"
+		parameterType="InParams">
+		select count(*) from t_order_product as a
+	</select>
+	<select id="getScalar2" resultType="java.lang.Integer"
+		parameterType="InParams">
+		select count(*) from t_order_product as a
+	</select>
+</mapper>
