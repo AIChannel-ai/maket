@@ -12,7 +12,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="2865cdf2-b5a5-4bb2-81ea-041bbecfab1d" name="Default Changelist" comment="0.1" />
+    <list default="true" id="5f454353-c107-46e8-92e4-f8f866994550" name="变更" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -172,7 +172,7 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="2865cdf2-b5a5-4bb2-81ea-041bbecfab1d" name="Default Changelist" comment="" />
+      <changelist id="" name="Default Changelist" comment="" />
       <created>1593047810554</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
@@ -184,7 +184,7 @@
       <workItem from="1639912664403" duration="5468000" />
       <workItem from="1639927081333" duration="1014000" />
       <workItem from="1639928138332" duration="2000" />
-      <workItem from="1639928413046" duration="308000" />
+      <workItem from="1639928413046" duration="612000" />
     </task>
     <task id="LOCAL-00001" summary="First Release">
       <created>1639927866716</created>
@@ -207,7 +207,14 @@
       <option name="project" value="LOCAL" />
       <updated>1639928714860</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="0.1">
+      <created>1639928955641</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1639928955642</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
